@@ -30,7 +30,7 @@ void BinarySearch(int arr[],int start,int end,int f,int &min,int &max)
   }
 }
 int main(int argc, char const *argv[]) {
-  int arr[12]={2,3,4,4,4,4,4,4,5,8,8,10};
+  int arr[12]={4,4,4,4,4,4,4,4,4,4,4,4};
   int size=12;
   /*cin>>size;
   int *arr;
@@ -46,6 +46,12 @@ int main(int argc, char const *argv[]) {
 
   BinarySearch(arr,0,12,f,minIndex,maxIndex);
 
+  if(minIndex == INT_MAX)
+    minIndex=0;
+  if(maxIndex == INT_MIN)
+    maxIndex=size-1;
+
+    
   cout<<"Min:"<<minIndex<<endl<<"Max:"<<maxIndex<<endl;
   std::cout << maxIndex - minIndex +1 << '\n';
   return 0;
