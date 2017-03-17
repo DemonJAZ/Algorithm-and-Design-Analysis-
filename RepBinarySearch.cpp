@@ -5,16 +5,15 @@ using namespace std;
 void BinarySearch(int arr[],int start,int end,int f,int &min,int &max)
 {
   int mid = (start+end)+1/2;
-  if(start<end){
+  if(start<=end){
     if(arr[mid]==f)
     {
       if(arr[mid-1]==f)
         BinarySearch(arr,start,mid-1,f,min,max);
       else
       {
-          if(mid < min)
-            min = mid;
-          return;
+        if(mid < min)
+          min = mid;
       }
       if(arr[mid+1]==f)
         BinarySearch(arr,mid+1,end,f,min,max);
@@ -22,16 +21,17 @@ void BinarySearch(int arr[],int start,int end,int f,int &min,int &max)
       {
         if(mid > max)
           max = mid;
-        return;
       }
     }
-    BinarySearch(arr,start,mid-1,f,min,max);
-    BinarySearch(arr,mid+1,end,f,min,max);
+    else
+      BinarySearch(arr,start,mid-1,f,min,max);
+      BinarySearch(arr,mid+1,end,f,min,max);
   }
 }
 int main(int argc, char const *argv[]) {
-  int arr[12]={4,4,4,4,4,4,4,4,4,4,4,4};
-  int size=12;
+  //int arr[5]={4,4,4,4,4};
+  int arr[12]={1,2,3,4,5,6,7,8,9,10,11,12};
+  int size=5;
   /*cin>>size;
   int *arr;
   arr = new int[size];
@@ -46,12 +46,6 @@ int main(int argc, char const *argv[]) {
 
   BinarySearch(arr,0,12,f,minIndex,maxIndex);
 
-  if(minIndex == INT_MAX)
-    minIndex=0;
-  if(maxIndex == INT_MIN)
-    maxIndex=size-1;
-
-    
   cout<<"Min:"<<minIndex<<endl<<"Max:"<<maxIndex<<endl;
   std::cout << maxIndex - minIndex +1 << '\n';
   return 0;
